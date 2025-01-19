@@ -12,7 +12,7 @@ buttons_cmds = InlineKeyboardMarkup(
     [
         [
             InlineKeyboardButton("Gates ♻️", "gates"),
-            InlineKeyboardButton("Premium 🛒", "premium"),
+            InlineKeyboardButton("Premium 🛒", "prm"),
         ],
         [InlineKeyboardButton("𝘾𝙝𝙖𝙣𝙣𝙚𝙡 💫", url="https://t.me/Reohecks")],
         [exit_button],
@@ -25,16 +25,12 @@ buttons_gates = InlineKeyboardMarkup(
             InlineKeyboardButton(" 🔐 Auth Gate ", "auths"),
             InlineKeyboardButton("💰 Charge Gate", "chargeds"),
         ],
-        [
         [InlineKeyboardButton("💣 CC Killer Gates (soon)", "specials")],
-        [InlineKeyboardButton("🛠 Other Cmands", "tools")
-   
-        ],
-        [InlineKeyboardButton("↩️", "home")
+        [InlineKeyboardButton("🛠 Other Cmands", "tools")],
+        [InlineKeyboardButton("↩️", "home")],
         [exit_button],
     ]
 )
-
 
 # RETURN & EXIT GATES
 return_and_exit_gates = InlineKeyboardMarkup(
@@ -52,10 +48,8 @@ return_home_and_exit = InlineKeyboardMarkup(
     ]
 )
 
-
 # GATES AUTH
-
-text_gates_auth = f"""
+text_gates_auth = """
 𝙂𝙖𝙩𝙚𝙬𝙖𝙮𝙨 𝘼𝙪𝙩𝙝
 
 <code>Shopify -» Auth</code>
@@ -74,8 +68,7 @@ buttons_auth_page_1 = InlineKeyboardMarkup(
 )
 
 # GATES CHARGED
-
-text_gates_charged = f"""
+text_gates_charged = """
 Charged Gateway 💰
 
 <code>PayPal -» $0.01</code>
@@ -109,7 +102,7 @@ buttons_charged_page_1 = InlineKeyboardMarkup(
 )
 
 # GATES SPECIALS
-text_gates_especials = f"""💣 CC Killer Gates
+text_gates_especials = """💣 CC Killer Gates
 
 Under development, coming soon!⌛️
 
@@ -117,15 +110,16 @@ Kill a specific card.
 
 Command: <code>/kill CARD_NUMBER | EXP_DATE | CVV</code>
 Example: <code>/kill 4647...6215|11|2024|630</code>
-
 """
+
 buttons_specials_page_1 = InlineKeyboardMarkup(
     [
         [InlineKeyboardButton("↩️", "home")],
     ]
 )
 
-text_gates_premium = f"""🌟 Introducing Premium Subscriptions!
+# PREMIUM
+text_gates_premium = """🌟 Introducing Premium Subscriptions!
 
 ❓ Why Choose Premium?
 
@@ -142,7 +136,6 @@ text_gates_premium = f"""🌟 Introducing Premium Subscriptions!
 ⚠️ Important: Make sure to pay the exact indicated amount within the given timeframe as we're not responsible for any losses of funds.
 
 Enjoy a better experience with our service. Upgrade now! 🚀 Click the button below to upgrade to Premium. 👇
-
 """
 
 buttons_premium_page_1 = InlineKeyboardMarkup(
@@ -151,8 +144,9 @@ buttons_premium_page_1 = InlineKeyboardMarkup(
         [exit_button],
     ]
 )
+
 # TOOLS
-text_tools = f"""
+text_tools = """
 𝙏𝙤𝙤𝙡𝙨 🛠
 
 <code>send review reference</code>
@@ -167,7 +161,7 @@ text_tools = f"""
 <code>.gpt hola</code> -» <code>Premium</code>
 <code>On ✅</code>
 
-{<code>generate address</code>
+<code>generate address</code>
 <code>.rnd us</code> -» <code>Free</code>
 <code>On ✅</code>
 
@@ -192,5 +186,6 @@ text_tools = f"""
 <code>On ✅</code>
 
 <code>info plan group</code>
-l<code>.plang</code> -» <code>Free</code>
-<code>On ✅</code>"""
+<code>.plang</code> -» <code>Free</code>
+<code>On ✅</code>
+"""
