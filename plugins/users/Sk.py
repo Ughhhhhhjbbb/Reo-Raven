@@ -13,7 +13,7 @@ async def sk_cmd(client: Client, m: Message):
     with Database() as db:
         if not db.is_authorized(user_id, m.chat.id):
             return await m.reply(
-                "𝑻𝒉𝒊𝒔 𝒄𝒉𝒂𝒕 𝒊𝒔 𝒏𝒐𝒕 𝒂𝒑𝒑𝒓𝒐𝒗𝒆𝒅 𝒕𝒐 𝒖𝒔𝒆 𝒕𝒉𝒊𝒔 𝒃𝒐𝒕.", quote=True
+                "U Are Not The Premium User Purchase Here --> @Reo_47.", quote=True
             )
         info_user = db.get_info_user(user_id)
     ini = perf_counter()
