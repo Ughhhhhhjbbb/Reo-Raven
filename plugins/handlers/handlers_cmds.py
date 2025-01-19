@@ -107,6 +107,12 @@ async def handler_tools(client: Client, callback_query: CallbackQuery):
     await callback_query.edit_message_text(
         text_tools, reply_markup=return_home_and_exit
     )
+    
+    @Client.on_callback_query(filters.regex("premium"))
+async def handler_tools(client: Client, callback_query: CallbackQuery):
+    await callback_query.edit_message_text(
+        text_premium, reply_markup=return_home_and_exit
+    )
 
 
 @Client.on_callback_query(filters.regex("exit"))
