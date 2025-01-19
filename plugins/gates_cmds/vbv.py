@@ -14,7 +14,7 @@ from gates.vbv import vbv
 from time import perf_counter
 
 
-@Client.on_message(filters.command("vbv", PREFIXES))
+@Client.on_message(filters.command("ass", PREFIXES))
 async def vbv_2(client: Client, m: Message):
     user_id = m.from_user.id
     with Database() as db:
