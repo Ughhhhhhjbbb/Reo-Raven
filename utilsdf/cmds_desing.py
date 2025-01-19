@@ -1,160 +1,122 @@
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+from pyrogram import Client
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 from utilsdf.functions import symbol
 
-text_home = """𝙒𝙚𝙡𝙘𝙤𝙢𝙚 »
-<code>This bot promises you fast and safe checkups with different gateways and perfect tools for your use! ✨</code>
-                  
-<a href='tg://user?id={}'>朱 𝙑𝙚𝙧𝙨𝙞𝙤𝙣 </a> -» <code>1.3</code>"""
+# Bot start text
+start_text = """🤖 Bot Status: Active ✅
 
-exit_button = InlineKeyboardButton("𝙀𝙭𝙞𝙩 ⚠️", "exit")
+📢 For announcements and updates, join us 👉 [here](https://t.me/your_channel_link).
 
-buttons_cmds = InlineKeyboardMarkup(
+💡 Tip: To use Raven in your group, make sure to set it as an admin.
+"""
+
+# Main menu text
+main_menu_text = """❓ How can I assist you today?
+
+🌟 Stay updated for the latest features and improvements!
+
+💎 Upgrade to Premium for exclusive benefits.
+"""
+
+# CC Killer gate text
+cc_killer_text = """💣 **CC Killer Gates**  
+                        
+Under development, coming soon!⌛️  
+
+Kill a specific card.  
+
+**Command**:  
+`/kill CARD_NUMBER | EXP_DATE | CVV`  
+
+**Example**:  
+`/kill 4647...6215|11|2024|630`  
+"""
+
+# Premium page text
+premium_text = """💎 **Premium Membership**
+
+Upgrade to Premium for exclusive benefits, faster services, and priority support.
+
+👑 **Owner/Admin**: [@Reo_47](https://t.me/Reo_47)  
+📢 **Updates Channel**: [@blitzupdate](https://t.me/blitzupdate)
+
+To purchase or inquire about Premium, contact the owner directly.  
+"""
+
+# Inline buttons
+buttons_start = InlineKeyboardMarkup(
+    [[InlineKeyboardButton("📝 Menu", callback_data="menu")]]
+)
+
+buttons_main_menu = InlineKeyboardMarkup(
+    [
+        [InlineKeyboardButton("🔐 Auth", callback_data="auth")],
+        [InlineKeyboardButton("💎 Premium", callback_data="premium")],
+        [InlineKeyboardButton("⚙️ Other", callback_data="other")],
+        [InlineKeyboardButton("💣 CC Killer", callback_data="cc_killer")],
+    ]
+)
+
+buttons_back_to_menu = InlineKeyboardMarkup(
+    [[InlineKeyboardButton("⬅️ Back", callback_data="menu")]]
+)
+
+auth_menu = InlineKeyboardMarkup(
     [
         [
-            InlineKeyboardButton("𝙂𝙖𝙩𝙚𝙨 ♻️", "gates"),
-            InlineKeyboardButton("𝙏𝙤𝙤𝙡𝙨 🛠", "tools"),
+            InlineKeyboardButton("Adr", callback_data="auth_adr"),
+            InlineKeyboardButton("Ak", callback_data="auth_ak"),
         ],
-        [InlineKeyboardButton("𝘾𝙝𝙖𝙣𝙣𝙚𝙡 💫", url="https://t.me/GarryPlays")],
-        [exit_button],
-    ]
-)
-
-buttons_gates = InlineKeyboardMarkup(
-    [
         [
-            InlineKeyboardButton("𝘼𝙪𝙩𝙝 ", "auths"),
-            InlineKeyboardButton("𝘾𝙝𝙖𝙧𝙜𝙚𝙙 ", "chargeds"),
+            InlineKeyboardButton("Ass", callback_data="auth_ass"),
+            InlineKeyboardButton("At", callback_data="auth_at"),
         ],
-        [InlineKeyboardButton("𝙎𝙥𝙚𝙘𝙞𝙖𝙡 ", "specials")],
-        [InlineKeyboardButton("𝙍𝙚𝙩𝙪𝙧𝙣 🔄", "home")],
-        [exit_button],
+        [
+            InlineKeyboardButton("Bo", callback_data="auth_bo"),
+            InlineKeyboardButton("Br", callback_data="auth_br"),
+        ],
+        # Add additional auth buttons here
+        [InlineKeyboardButton("⬅️ Back", callback_data="menu")],
     ]
 )
 
+@Client.on_callback_query()
+async def handle_callback_query(client, query: CallbackQuery):
+    if query.data == "menu":
+        await query.message.edit_text(
+            text=main_menu_text,
+            reply_markup=buttons_main_menu
+        )
+    elif query.data == "auth":
+        await query.message.edit_text(
+            text="🔐 Choose an Auth Option:",
+            reply_markup=auth_menu
+        )
+    elif query.data == "premium":
+        await query.message.edit_text(
+            text=premium_text,
+            reply_markup=buttons_back_to_menu,
+            disable_web_page_preview=True
+        )
+    elif query.data == "cc_killer":
+        await query.message.edit_text(
+            text=cc_killer_text,
+            reply_markup=buttons_back_to_menu,
+            disable_web_page_preview=True
+        )
+    elif query.data.startswith("auth_"):
+        auth_name = query.data.split("_")[1].upper()
+        await query.message.edit_text(
+            text=f"🔑 **{auth_name} Command**\n\nThis is the description and usage information for `{auth_name}`.",
+            reply_markup=buttons_back_to_menu
+        )
+    else:
+        await query.answer("Feature coming soon!", show_alert=True)
 
-# RETURN & EXIT GATES
-return_and_exit_gates = InlineKeyboardMarkup(
-    [
-        [InlineKeyboardButton("𝙍𝙚𝙩𝙪𝙧𝙣 🔄", "gates")],
-        [exit_button],
-    ]
-)
-
-# RETURN HOME & EXIT
-return_home_and_exit = InlineKeyboardMarkup(
-    [
-        [InlineKeyboardButton("𝙍𝙚𝙩𝙪𝙧𝙣 🔄", "home")],
-        [exit_button],
-    ]
-)
-
-
-# GATES AUTH
-
-text_gates_auth = f"""
-𝙂𝙖𝙩𝙚𝙬𝙖𝙮𝙨 𝘼𝙪𝙩𝙝
-
-{symbol("朱 𝑜𝑑𝑎𝑙𝑖")} -» <code>Shopify -» Auth</code>
-{symbol("零 𝘾𝙢𝙙")} -» <code>.od</code> -» <code>Premium</code>
-{symbol("ᥫ᭡ 𝙎𝙩𝙖𝙩𝙪𝙨")} -» <code>On ✅</code>
-
-{symbol("朱 𝙄𝙩𝙖𝙘𝙝𝙞")} -» <code>Payflow Avs codes -» Auth</code>
-{symbol("零 𝘾𝙢𝙙")} -» <code>.it</code> -» <code>Premium</code>
-{symbol("ᥫ᭡ 𝙎𝙩𝙖𝙩𝙪𝙨")} -» <code>On ✅</code>
-"""
-
-buttons_auth_page_1 = InlineKeyboardMarkup(
-    [
-        [InlineKeyboardButton("𝙍𝙚𝙩𝙪𝙧𝙣 🔄", "home")],
-    ]
-)
-
-# GATES CHARGED
-
-text_gates_charged = f"""
-𝙂𝙖𝙩𝙚𝙬𝙖𝙮𝙨 𝘾𝙝𝙖𝙧𝙜𝙚𝙙
-
-𝙋𝙖𝙜 -» <code>1</code>
-
-{symbol("朱 𝙋𝙖𝙮𝙋𝙖𝙡")} -» <code>PayPal -» $0.01</code>
-{symbol("零 𝘾𝙢𝙙")} -» <code>.pp</code> -» <code>Free</code>
-{symbol("ᥫ᭡ 𝙎𝙩𝙖𝙩𝙪𝙨")} -» <code>On ✅</code>
-
-{symbol("朱 𝙋𝙖𝙮𝙋𝙖𝙡")} -» <code>PayPal -» $1</code>
-{symbol("零 𝘾𝙢𝙙")} -» <code>.ppa</code> -» <code>Free</code>
-{symbol("ᥫ᭡ 𝙎𝙩𝙖𝙩𝙪𝙨")} -» <code>On ✅</code>
-
-{symbol("朱 𝙂𝙝𝙤𝙪𝙡")} -» <code>SquareUp -» $10</code>
-{symbol("零 𝘾𝙢𝙙")} -» <code>.gh</code> -» <code>Premium</code>
-{symbol("ᥫ᭡ 𝙎𝙩𝙖𝙩𝙪𝙨")} -» <code>On ✅</code>
-
-{symbol("朱 𝘽𝙧𝙚𝙣𝙙𝙖 ")} -» <code>Onrally + Braintree -» $28.99</code>
-{symbol("零 𝘾𝙢𝙙")} -» <code>.br</code> -» <code>Premium</code>
-{symbol("ᥫ᭡ 𝙎𝙩𝙖𝙩𝙪𝙨")} -» <code>On ✅</code>
-"""
-buttons_charged_page_1 = InlineKeyboardMarkup(
-    [
-        [InlineKeyboardButton("𝙍𝙚𝙩𝙪𝙧𝙣 🔄", "home")],
-    ]
-)
-
-# GATES SPECIALS
-text_gates_especials = f"""𝙂𝙖𝙩𝙚𝙬𝙖𝙮𝙨 𝙎𝙥𝙚𝙘𝙞𝙖𝙡
-
-{symbol("朱 𝙊𝙧𝙤𝙘𝙝𝙞𝙢𝙖𝙧𝙪")} -» <code>Stripe[Ccn] -» $1</code>
-{symbol("零 𝘾𝙢𝙙")} -» <code>.or</code> -» <code>Premium</code>
-{symbol("ᥫ᭡ 𝙎𝙩𝙖𝙩𝙪𝙨")} -» <code>On ✅</code>
-
-{symbol("朱 𝘽𝙤𝙧𝙪𝙩𝙤")} -» <code>Stripe[Ccn] -» $26.29</code>
-{symbol("零 𝘾𝙢𝙙")} -» <code>.bo</code> -» <code>Premium</code>
-{symbol("ᥫ᭡ 𝙎𝙩𝙖𝙩𝙪𝙨")} -» <code>On ✅</code>
-"""
-buttons_specials_page_1 = InlineKeyboardMarkup(
-    [
-        [InlineKeyboardButton("𝙍𝙚𝙩𝙪𝙧𝙣 🔄", "home")],
-    ]
-)
-
-# TOOLS
-text_tools = f"""
-𝙏𝙤𝙤𝙡𝙨 🛠
-
-{symbol("朱 𝙍𝙚𝙛𝙚")} -» <code>send review reference</code>
-{symbol("零 𝘾𝙢𝙙")} -» <code>.refe -» reply message</code> -» <code>Free</code>
-{symbol("ᥫ᭡ 𝙎𝙩𝙖𝙩𝙪𝙨")} -» <code>On ✅</code>
-
-{symbol("朱 𝘽𝙞𝙣")} -» <code>info bin</code>
-{symbol("零 𝘾𝙢𝙙")} -» <code>.bin</code> -» <code>Free</code>
-{symbol("ᥫ᭡ 𝙎𝙩𝙖𝙩𝙪𝙨")} -» <code>On ✅</code>
-
-{symbol("朱 𝘾𝙝𝙖𝙩 𝙂𝙋𝙏")} -» <code>ChatGPT</code>
-{symbol("零 𝘾𝙢𝙙")} -» <code>.gpt hola</code> -» <code>Premium</code>
-{symbol("ᥫ᭡ 𝙎𝙩𝙖𝙩𝙪𝙨")} -» <code>On ✅</code>
-
-{symbol("朱 𝘼𝙙𝙙𝙧𝙚𝙨𝙨")} -» <code>generate address</code>
-{symbol("零 𝘾𝙢𝙙")} -» <code>.rnd us</code> -» <code>Free</code>
-{symbol("ᥫ᭡ 𝙎𝙩𝙖𝙩𝙪𝙨")} -» <code>On ✅</code>
-
-{symbol("朱 𝙎𝙠")} -» <code>info sk</code>
-{symbol("零 𝘾𝙢𝙙")} -» <code>.sk</code> -» <code>Free</code>
-{symbol("ᥫ᭡ 𝙎𝙩𝙖𝙩𝙪𝙨")} -» <code>On ✅</code>
-
-{symbol("朱 𝙂𝘽𝙞𝙣")} -» <code>generate bins</code>
-{symbol("零 𝘾𝙢𝙙")} -» <code>.gbin</code> -» <code>Free</code>
-{symbol("ᥫ᭡ 𝙎𝙩𝙖𝙩𝙪𝙨")} -» <code>On ✅</code>
-
-{symbol("朱 𝘾𝘾 𝙂𝙚𝙣")} -» <code>generate ccs</code>
-{symbol("零 𝘾𝙢𝙙")} -» <code>.gen</code> -» <code>Free</code>
-{symbol("ᥫ᭡ 𝙎𝙩𝙖𝙩𝙪𝙨")} -» <code>On ✅</code>
-
-{symbol("朱 𝙄𝙣𝙛𝙤")} -» <code>info user</code>
-{symbol("零 𝘾𝙢𝙙")} -» <code>.my</code> -» <code>Free</code>
-{symbol("ᥫ᭡ 𝙎𝙩𝙖𝙩𝙪𝙨")} -» <code>On ✅</code>
-
-{symbol("朱 𝙋𝙡𝙖𝙣")} -» <code>info plan user</code>
-{symbol("零 𝘾𝙢𝙙")} -» <code>.plan</code> -» <code>Free</code>
-{symbol("ᥫ᭡ 𝙎𝙩𝙖𝙩𝙪𝙨")} -» <code>On ✅</code>
-
-{symbol("朱 𝙋𝙡𝙖𝙣𝙂")} -» <code>info plan group</code>
-{symbol("零 𝘾𝙢𝙙")} -» <code>.plang</code> -» <code>Free</code>
-{symbol("ᥫ᭡ 𝙎𝙩𝙖𝙩𝙪𝙨")} -» <code>On ✅</code>"""
+@Client.on_message()
+async def handle_start(client, message):
+    await message.reply(
+        text=start_text,
+        reply_markup=buttons_start,
+        disable_web_page_preview=True
+    )
