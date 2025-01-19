@@ -6,7 +6,7 @@ text_home = """𝙒𝙚𝙡𝙘𝙤𝙢𝙚 »
                   
 <a href='tg://user?id={}'>朱 𝙑𝙚𝙧𝙨𝙞𝙤𝙣 </a> -» <code>1.3</code>"""
 
-#exit_button = InlineKeyboardButton("𝙀𝙭𝙞𝙩 ⚠️", "exit")
+exit_button = InlineKeyboardButton("𝙀𝙭𝙞𝙩 ⚠️", "exit")
 
 buttons_cmds = InlineKeyboardMarkup(
     [
@@ -68,7 +68,7 @@ text_gates_auth = f"""
 
 buttons_auth_page_1 = InlineKeyboardMarkup(
     [
-        [InlineKeyboardButton("↩️", "home")],
+        [InlineKeyboardButton("↩️", "gates")],
     ]
 )
 
@@ -103,7 +103,7 @@ Charged Gateway 💰
 """
 buttons_charged_page_1 = InlineKeyboardMarkup(
     [
-        [InlineKeyboardButton("↩️", "home")],
+        [InlineKeyboardButton("↩️", "gates")],
     ]
 )
 
@@ -120,11 +120,11 @@ Example: <code>/kill 4647...6215|11|2024|630</code>
 """
 buttons_specials_page_1 = InlineKeyboardMarkup(
     [
-        [InlineKeyboardButton("↩️", "home")],
+        [InlineKeyboardButton("↩️", "gates")],
     ]
 )
 
-text_premium = f"""🌟 Introducing Premium Subscriptions!
+text_gates_premium = f"""🌟 Introducing Premium Subscriptions!
 
 ❓ Why Choose Premium?
 
@@ -146,7 +146,7 @@ Enjoy a better experience with our service. Upgrade now! 🚀 Click the button b
 
 buttons_premium_page_1 = InlineKeyboardMarkup(
     [
-        [InlineKeyboardButton("↩️", "home")],
+        [InlineKeyboardButton("↩️", "gates")],
         [exit_button],
     ]
 )
@@ -166,7 +166,7 @@ text_tools = f"""
 <code>.gpt hola</code> -» <code>Premium</code>
 <code>On ✅</code>
 
-{<code>generate address</code>
+<code>generate address</code>
 <code>.rnd us</code> -» <code>Free</code>
 <code>On ✅</code>
 
