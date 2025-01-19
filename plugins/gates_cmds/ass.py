@@ -15,7 +15,7 @@ from gates.ass import ass
 from time import perf_counter
 
 
-@Client.on_message(filters.command("ass", PREFIXES))
+@Client.on_message(filters.command("vbv", PREFIXES))
 async def ass_(client: Client, m: Message):
     user_id = m.from_user.id
     with Database() as db:
@@ -33,7 +33,7 @@ async def ass_(client: Client, m: Message):
     ccs = get_cc(text)
     if not ccs:
         return await m.reply(
-            "𝙂𝙖𝙩𝙚𝙬𝙖𝙮 <code>𝘼𝙨𝙨 ♻️ -» $4 -» vbv</code>\n𝙁𝙤𝙧𝙢𝙖𝙩 -» <code>/ass cc|month|year|cvc</code>",
+            "𝙂𝙖𝙩𝙚𝙬𝙖𝙮 <code>𝙑𝙗𝙫 ♻️</code>\n𝙁𝙤𝙧𝙢𝙖𝙩 -» <code>/vbv cc|month|year|cvc</code>",
             quote=True,
         )
     ini = perf_counter()
@@ -58,17 +58,16 @@ async def ass_(client: Client, m: Message):
     with Database() as db:
         db.increase_checks(user_id)
 
-    text_ = f"""<b>ア 𝘾𝘾 -» <code>{cc_formatted}</code>
-カ 𝙎𝙩𝙖𝙩𝙪𝙨 -» <code>{status}</code>
-ツ 𝙍𝙚𝙨𝙪𝙡𝙩 -» <code>{response}</code>
-ツ 𝙑𝙗𝙫 -» <code>{vbv}</code>
+    text_ = f"""<b>{status}
 
-キ 𝘽𝙞𝙣 -» <code></code> - <code></code> - <code></code>
-朱 𝘽𝙖𝙣𝙠 -» <code></code>
-零 𝘾𝙤𝙪𝙣𝙩𝙧𝙮 -» <code></code> 
+𝗖𝗮𝗿𝗱: {cc_formatted}
+𝐆𝐚𝐭𝐞𝐰𝐚𝐲: 3DS Lookup {response}
+𝐑𝐞𝐬𝐩𝐨𝐧𝐬𝐞: {vbv}
 
-⸙ 𝙂𝙖𝙩𝙚𝙬𝙖𝙮 -» <code>𝘼𝙨𝙨 -» $4</code>
-꫟ 𝙏𝙞𝙢𝙚 -» <code>{final:0.3}'s</code>
-ᥫ᭡ 𝘾𝙝𝙚𝙘𝙠𝙚𝙙 𝙗𝙮 -» <a href='tg://user?id={m.from_user.id}'>{m.from_user.first_name}</a> []</b>"""
+𝗜𝗻𝗳𝗼: 
+𝐈𝐬𝐬𝐮𝐞𝐫: 
+𝐂𝐨𝐮𝐧𝐭𝐫𝐲:
+
+𝗧𝗶𝗺𝗲 <code>{final:0.3}'s</b>"""
 
     await msg.edit(text_)
