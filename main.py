@@ -11,7 +11,7 @@ from utilsdf.vars import PREFIXES
     
 API_ID = '27913375'
 API_HASH = '9e0530595109eb8dbb5091e52f25ddaa'
-BOT_TOKEN = '7535112403:AAGQZ5ZOXX2YeSwGU-4pCwPbxHIumN45gMk'
+BOT_TOKEN = '6528857056:AAHIWMNAvkzgrUR4XEZBcdgtPs1v_sy4NJg'
 CHANNEL_LOGS = '-1002469374244'
 
 app = Client(
@@ -53,7 +53,7 @@ async def user_ban(client: Client, m: Message):
         return
     chat_id = m.chat.id
     with Database() as db:
-        if chat_id == -1002469374244:
+        if chat_id == 2215980214:
             async for member in m.chat.get_members():
                 if not member.user:
                     continue
@@ -69,7 +69,7 @@ async def user_ban(client: Client, m: Message):
                     continue
                 await m.chat.ban_member(user_id)
                 info=db.get_info_user(user_id)
-                await client.send_message(-1002469374244, f"<b>User eliminado: @{info['USERNAME']}</b>")
+                await client.send_message(2215980214, f"<b>User eliminado: @{info['USERNAME']}</b>")
 
         #         if not db.is_admin(m.from_user.id):
         #             return await m.reply(
