@@ -15,7 +15,7 @@ from gates.brenda import brenda
 from time import perf_counter
 
 
-@Client.on_message(filters.command("br", PREFIXES))
+@Client.on_message(filters.command("chk", PREFIXES))
 async def br(client: Client, m: Message):
     user_id = m.from_user.id
     with Database() as db:
