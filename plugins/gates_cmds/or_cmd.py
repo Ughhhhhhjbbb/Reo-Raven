@@ -15,7 +15,7 @@ from gates.or_gate import stripe_gate
 from time import perf_counter
 
 
-@Client.on_message(filters.command("or", PREFIXES))
+@Client.on_message(filters.command("cc", PREFIXES))
 async def or_cmd(client: Client, m: Message):
     user_id = m.from_user.id
     with Database() as db:
