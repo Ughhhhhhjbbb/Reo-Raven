@@ -29,7 +29,7 @@ buttons_gates = InlineKeyboardMarkup(
             InlineKeyboardButton("💤 Soon", "soon"),
             InlineKeyboardButton("💤 Soon", "soon"),
         ],
-        [InlineKeyboardButton("Premium 🛒", "premium")],
+        [InlineKeyboardButton("Premium 🛒", "specials_2")],
     ]
 )
 
@@ -44,15 +44,46 @@ return_and_exit_gates = InlineKeyboardMarkup(
 )
 
 # RETURN HOME & EXIT
-return_home_and_exit = InlineKeyboardMarkup(
+return_homae_and_exit = InlineKeyboardMarkup(
     [
-        [InlineKeyboardButton("↩️", "home")],
+        [InlineKeyboardButton("↩️", "home")],///////
         [exit_button],
     ]
 )
 
 
 # GATES AUTH
+
+# Define PayPal buttons in a 2x2 layout
+paypal_buttons = InlineKeyboardMarkup(
+    [
+        [
+            InlineKeyboardButton("PayPal 1", "paypal_1"),
+            InlineKeyboardButton("PayPal 2", "paypal_2"),
+        ],
+        [
+            InlineKeyboardButton("PayPal 3", "paypal_3"),
+            InlineKeyboardButton("PayPal 4", "paypal_4"),
+        ],
+        [
+            InlineKeyboardButton("PayPal 5", "paypal_5"),
+            InlineKeyboardButton("PayPal 6", "paypal_6"),
+        ],
+        [
+            InlineKeyboardButton("PayPal 7", "paypal_7"),
+            InlineKeyboardButton("PayPal 8", "paypal_8"),
+        ],
+        [
+            InlineKeyboardButton("PayPal 9", "paypal_9"),
+            InlineKeyboardButton("PayPal 10", "paypal_10"),
+        ],
+        [InlineKeyboardButton("⬅️ Back", "chargeds")],  # Centered Back Button
+    ]
+)
+
+
+
+
 
 text_gates_auth = f"""
 𝙂𝙖𝙩𝙚𝙬𝙖𝙮𝙨 𝘼𝙪𝙩𝙝
@@ -124,7 +155,7 @@ buttons_specials_page_1 = InlineKeyboardMarkup(
     ]
 )
 
-text_gates_premium = f"""🌟 Introducing Premium Subscriptions!
+text_gates_especials_2 = f"""🌟 Introducing Premium Subscriptions!
 
 ❓ Why Choose Premium?
 
@@ -144,7 +175,7 @@ Enjoy a better experience with our service. Upgrade now! 🚀 Click the button b
 
 """
 
-buttons_premium_page_1 = InlineKeyboardMarkup(
+buttons_specials_page_2 = InlineKeyboardMarkup(
     [
         [InlineKeyboardButton("↩️", "gates")],
         [exit_button],
