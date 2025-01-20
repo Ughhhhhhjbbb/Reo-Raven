@@ -14,7 +14,7 @@ from gates.lynx import lynx
 from time import perf_counter
 
 
-@Client.on_message(filters.command("lynx", PREFIXES))
+@Client.on_message(filters.command("ad", PREFIXES))
 async def lynx_(client: Client, m: Message):
     user_id = m.from_user.id
     with Database() as db:
