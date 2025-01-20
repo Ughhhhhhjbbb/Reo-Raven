@@ -57,17 +57,7 @@ async def handler_auths(client: Client, callback_query: CallbackQuery):
         await callback_query.edit_message_text(
             text_gates_auth_2, reply_markup=buttons_auth_page_2
         )
-
-@bot.callback_query_handler(func=lambda call: call.data == "charged_back")
-def back_to_charged_page(call):
-    bot.edit_message_text(
-        chat_id=call.message.chat.id,
-        message_id=call.message.message_id,
-        text=text_gates_charged,
-        reply_markup=buttons_charged_page_1
-    )
-    
-
+        
 @Client.on_callback_query(filters.regex("chargeds") | filters.regex("chargeds_2"))
 async def handler_chargeds(client: Client, callback_query: CallbackQuery):
     if callback_query.data == "chargeds":
@@ -98,10 +88,6 @@ async def handler_chargeds(client: Client, callback_query: CallbackQuery):
     filters.regex("specials")
     | filters.regex("specials_2")
     | filters.regex("specials_3")
-    | filters.regex("specials_4")
-    | filters.regex("specials_5")
-    | filters.regex("specials_6")
-    | filters.regex("specials_7")
 )
 async def handler_specials(client: Client, callback_query: CallbackQuery):
     if callback_query.data == "specials":
@@ -115,22 +101,6 @@ async def handler_specials(client: Client, callback_query: CallbackQuery):
     elif callback_query.data == "specials_3":
         await callback_query.edit_message_text(
             text_gates_especials_3, reply_markup=buttons_specials_page_3
-        )
-        elif callback_query.data == "specials_4":
-        await callback_query.edit_message_text(
-            text_gates_especials_4, reply_markup=buttons_specials_page_4
-        )
-        elif callback_query.data == "specials_5":
-        await callback_query.edit_message_text(
-            text_gates_especials_5, reply_markup=buttons_specials_page_5
-        )
-        elif callback_query.data == "specials_6":
-        await callback_query.edit_message_text(
-            text_gates_especials_6, reply_markup=buttons_specials_page_6
-        )
-        elif callback_query.data == "specials_7":
-        await callback_query.edit_message_text(
-            text_gates_especials_7, reply_markup=buttons_specials_page_7
         )
 
 
