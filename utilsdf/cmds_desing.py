@@ -53,38 +53,6 @@ return_homae_and_exit = InlineKeyboardMarkup(
 
 
 # GATES AUTH
-
-# Define PayPal buttons in a 2x2 layout
-paypal_buttons = InlineKeyboardMarkup(
-    [
-        [
-            InlineKeyboardButton("PayPal 1", "paypal_1"),
-            InlineKeyboardButton("PayPal 2", "paypal_2"),
-        ],
-        [
-            InlineKeyboardButton("PayPal 3", "paypal_3"),
-            InlineKeyboardButton("PayPal 4", "paypal_4"),
-        ],
-        [
-            InlineKeyboardButton("PayPal 5", "paypal_5"),
-            InlineKeyboardButton("PayPal 6", "paypal_6"),
-        ],
-        [
-            InlineKeyboardButton("PayPal 7", "paypal_7"),
-            InlineKeyboardButton("PayPal 8", "paypal_8"),
-        ],
-        [
-            InlineKeyboardButton("PayPal 9", "paypal_9"),
-            InlineKeyboardButton("PayPal 10", "paypal_10"),
-        ],
-        [InlineKeyboardButton("⬅️ Back", "chargeds")],  # Centered Back Button
-    ]
-)
-
-
-
-
-
 text_gates_auth = f"""
 𝙂𝙖𝙩𝙚𝙬𝙖𝙮𝙨 𝘼𝙪𝙩𝙝
 
@@ -102,6 +70,157 @@ buttons_auth_page_1 = InlineKeyboardMarkup(
         [InlineKeyboardButton("↩️", "gates")],
     ]
 )
+
+
+text_gates_charged_2 =  f"""
+Adriana Charge
+
+/adr ⇾ ❌ Inactive | Maintenance
+"""
+
+
+buttons_charged_page_2 = InlineKeyboardMarkup(
+    [
+        [InlineKeyboardButton("↩️", "gates")],
+    ]
+)
+
+text_gates_charged_3 =  f"""
+Braintree
+
+/sb ❌ Inactive | Maintenance
+"""
+
+
+buttons_charged_page_3 = InlineKeyboardMarkup(
+    [
+        [InlineKeyboardButton("↩️", "gates")],
+    ]
+)
+
+text_gates_charged_4 =  f"""
+Squre
+
+/ka ❌ Inactive | Maintenance
+"""
+
+
+buttons_charged_page_4 = InlineKeyboardMarkup(
+    [
+        [InlineKeyboardButton("↩️", "gates")],
+    ]
+)
+
+text_gates_charged_5  =  f"""
+Hyper
+
+- Command: /bo
+- ✅ Active | 📅 1/20/25
+- $28.29 Charge
+- 1 Credit
+"""
+
+
+buttons_charged_page_5 = InlineKeyboardMarkup(
+    [
+        [InlineKeyboardButton("↩️", "gates")],
+    ]
+)   
+
+text_gates_charged_6 =  f"""
+Zara
+
+- Command: /dkt
+- ✅ Active | 📅 1/20/25
+- $1.00 Charge
+- 1 Credit
+"""
+
+
+buttons_charged_page_6 = InlineKeyboardMarkup(
+    [
+        [InlineKeyboardButton("↩️", "gates")],
+    ]
+)
+
+text_gates_charged_7 =  f"""
+Avs
+
+❌ Inactive | Maintenance
+"""
+
+
+buttons_charged_page_7 = InlineKeyboardMarkup(
+    [
+        [InlineKeyboardButton("↩️", "gates")],
+    ]
+)
+
+text_gates_charged_8 =  f"""
+Willieoseu
+
+- Command: /dx 
+- ✅ Active | 📅 1/20/25
+- $10.0 Charge
+- 1 Credit
+"""
+
+
+buttons_charged_page_8 = InlineKeyboardMarkup(
+    [
+        [InlineKeyboardButton("↩️", "gates")],
+    ]
+)
+
+text_gates_charged_9 =  f"""
+PayPal
+
+- Command: /pp
+- ✅ Active | 📅 1/20/25
+- $0.1 Charge
+- 1 Credit
+"""
+
+
+buttons_charged_page_9 = InlineKeyboardMarkup(
+    [
+        [InlineKeyboardButton("↩️", "gates")],
+    ]
+)
+
+text_gates_charged_10 =  f"""
+Onrally
+
+- Command: /gh
+- ✅ Active | 📅 1/20/25
+- $10.0 Charge
+- 1 Credit
+"""
+
+
+buttons_charged_page_10 = InlineKeyboardMarkup(
+    [
+        [InlineKeyboardButton("↩️", "gates")],
+    ]
+)
+
+text_gates_charged_11 =  f"""
+PayPal Pro
+
+- Command: /ppa
+- ✅ Active | 📅 1/20/25
+- $1.00 Charge
+- 1 Credit
+"""
+
+
+buttons_charged_page_11 = InlineKeyboardMarkup(
+    [
+        [InlineKeyboardButton("↩️", "gates")],
+    ]
+)
+
+
 
 # GATES CHARGED
 text_gates_charged = f"""
@@ -128,24 +247,24 @@ text_gates_charged = f"""
 buttons_charged_page_1 = InlineKeyboardMarkup(
         [
         [
-            InlineKeyboardButton("PayPal 1", "paypal_1"),
-            InlineKeyboardButton("PayPal 2", "paypal_2"),
+            InlineKeyboardButton("Braintree", "chargeds_11"),
+            InlineKeyboardButton("PayPal", "chargeds_2"),
         ],
         [
-            InlineKeyboardButton("PayPal 3", "paypal_3"),
-            InlineKeyboardButton("PayPal 4", "paypal_4"),
+            InlineKeyboardButton("Squre ", "chargeds_3"),
+            InlineKeyboardButton("PayPal Pro", "chargeds_4"),
         ],
         [
-            InlineKeyboardButton("PayPal 5", "paypal_5"),
-            InlineKeyboardButton("PayPal 6", "paypal_6"),
+            InlineKeyboardButton("Onrally ", "chargeds_5"),
+            InlineKeyboardButton("Adyen", "chargeds_6"),
         ],
         [
-            InlineKeyboardButton("PayPal 7", "paypal_7"),
-            InlineKeyboardButton("PayPal 8", "paypal_8"),
+            InlineKeyboardButton("Avs", "chargeds_7"),
+            InlineKeyboardButton("Willieoseu", "chargeds_8"),
         ],
         [
-            InlineKeyboardButton("PayPal 9", "paypal_9"),
-            InlineKeyboardButton("PayPal 10", "paypal_10"),
+            InlineKeyboardButton("Zara", "chargeds_9"),
+            InlineKeyboardButton("Hyper", "chargeds_10"),
         ],
         [InlineKeyboardButton("⬅️ Back", "gates")],  # Centered Back Button
     ]
