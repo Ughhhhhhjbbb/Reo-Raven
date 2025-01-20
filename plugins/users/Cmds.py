@@ -14,7 +14,7 @@ from random import choice
 )
 async def cmds(client: Client, m: Message):
     user_id = m.from_user.id
-    video_link = f"https://xddd727272666.alwaysdata.net/aa/video/{choice(['a', 'e', 'd', 'b'])}.mp4"
+    video_link = f"https://t.me/onlyiamdev/50"
     await m.reply_video(
         video=video_link,
         caption=text_home.format(user_id),
