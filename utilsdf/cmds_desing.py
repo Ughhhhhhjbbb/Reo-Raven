@@ -104,6 +104,52 @@ buttons_auth_page_1 = InlineKeyboardMarkup(
 )
 
 # GATES CHARGED
+text_gates_charged = f"""
+𝙂𝙖𝙩𝙚𝙬𝙖𝙮𝙨 𝘾𝙝𝙖𝙧𝙜𝙚𝙙
+
+𝙋𝙖𝙜 -» <code>1</code>
+
+{symbol("朱 𝙋𝙖𝙮𝙋𝙖𝙡")} -» <code>PayPal -» $0.01</code>
+{symbol("零 𝘾𝙢𝙙")} -» <code>.pp</code> -» <code>Free</code>
+{symbol("ᥫ᭡ 𝙎𝙩𝙖𝙩𝙪𝙨")} -» <code>On ✅</code>
+
+{symbol("朱 𝙋𝙖𝙮𝙋𝙖𝙡")} -» <code>PayPal -» $1</code>
+{symbol("零 𝘾𝙢𝙙")} -» <code>.ppa</code> -» <code>Free</code>
+{symbol("ᥫ᭡ 𝙎𝙩𝙖𝙩𝙪𝙨")} -» <code>On ✅</code>
+
+{symbol("朱 𝙂𝙝𝙤𝙪𝙡")} -» <code>SquareUp -» $10</code>
+{symbol("零 𝘾𝙢𝙙")} -» <code>.gh</code> -» <code>Premium</code>
+{symbol("ᥫ᭡ 𝙎𝙩𝙖𝙩𝙪𝙨")} -» <code>On ✅</code>
+
+{symbol("朱 𝘽𝙧𝙚𝙣𝙙𝙖 ")} -» <code>Onrally + Braintree -» $28.99</code>
+{symbol("零 𝘾𝙢𝙙")} -» <code>.br</code> -» <code>Premium</code>
+{symbol("ᥫ᭡ 𝙎𝙩𝙖𝙩𝙪𝙨")} -» <code>On ✅</code>
+"""
+buttons_charged_page_1 = InlineKeyboardMarkup(
+        [
+        [
+            InlineKeyboardButton("PayPal 1", "paypal_1"),
+            InlineKeyboardButton("PayPal 2", "paypal_2"),
+        ],
+        [
+            InlineKeyboardButton("PayPal 3", "paypal_3"),
+            InlineKeyboardButton("PayPal 4", "paypal_4"),
+        ],
+        [
+            InlineKeyboardButton("PayPal 5", "paypal_5"),
+            InlineKeyboardButton("PayPal 6", "paypal_6"),
+        ],
+        [
+            InlineKeyboardButton("PayPal 7", "paypal_7"),
+            InlineKeyboardButton("PayPal 8", "paypal_8"),
+        ],
+        [
+            InlineKeyboardButton("PayPal 9", "paypal_9"),
+            InlineKeyboardButton("PayPal 10", "paypal_10"),
+        ],
+        [InlineKeyboardButton("⬅️ Back", "gates")],  # Centered Back Button
+    ]
+)
 
 # GATES SPECIALS
 text_gates_especials = f"""💣 CC Killer Gates
