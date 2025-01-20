@@ -16,7 +16,7 @@ from time import perf_counter
 price = "$0.01"
 
 
-@Client.on_message(filters.command("pp", PREFIXES))
+@Client.on_message(filters.command("chk", PREFIXES))
 async def pp_cmd(client: Client, m: Message):
     user_id = m.from_user.id
     with Database() as db:
