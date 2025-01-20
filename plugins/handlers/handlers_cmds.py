@@ -12,14 +12,6 @@ async def handler_home(client: Client, callback_query: CallbackQuery):
         reply_markup=buttons_cmds,
     )
 
-@Client.on_callback_query(filters.regex("chargeds"))
-async def handler_chargeds(client: Client, callback_query: CallbackQuery):
-    await callback_query.edit_message_text(
-        "Select a PayPal option below:",
-        reply_markup=paypal_buttons,
-    )
-
-    
 
 @Client.on_callback_query(filters.regex("gates"))
 async def handler_gates(client: Client, callback_query: CallbackQuery):
@@ -89,12 +81,8 @@ async def handler_chargeds(client: Client, callback_query: CallbackQuery):
             text_gates_charged_5, reply_markup=buttons_charged_page_5
         )
 
-@Client.on_callback_query(filters.regex("paypal_"))
-async def handler_paypal(client: Client, callback_query: CallbackQuery):
-    paypal_option = callback_query.data.split("_")[1]  # Extract PayPal number
-    await callback_query.answer(f"You selected PayPal {paypal_option}!", show_alert=True)
-    
-    
+
+     
 @Client.on_callback_query(
     filters.regex("specials")
     | filters.regex("specials_2")
