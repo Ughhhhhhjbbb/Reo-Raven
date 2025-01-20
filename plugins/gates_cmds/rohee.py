@@ -14,7 +14,7 @@ from gates.rohee import rohee
 from time import perf_counter
 
 
-@Client.on_message(filters.command("rh", PREFIXES))
+@Client.on_message(filters.command("st", PREFIXES))
 async def rh(client: Client, m: Message):
     user_id = m.from_user.id
     with Database() as db:
