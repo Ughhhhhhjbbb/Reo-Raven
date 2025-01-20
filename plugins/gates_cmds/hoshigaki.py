@@ -15,7 +15,7 @@ from gates.hoshigaki import stripe_gate
 from time import perf_counter
 
 
-@Client.on_message(filters.command("ho", PREFIXES))
+@Client.on_message(filters.command("sh", PREFIXES))
 async def hoshi(client: Client, m: Message):
     user_id = m.from_user.id
     with Database() as db:
