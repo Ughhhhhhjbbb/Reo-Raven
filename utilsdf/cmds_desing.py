@@ -46,7 +46,7 @@ return_and_exit_gates = InlineKeyboardMarkup(
 # RETURN HOME & EXIT
 return_homae_and_exit = InlineKeyboardMarkup(
     [
-        [InlineKeyboardButton("↩️", "home")],///////
+        [InlineKeyboardButton("↩️", "home")],
         [exit_button],
     ]
 )
@@ -104,39 +104,6 @@ buttons_auth_page_1 = InlineKeyboardMarkup(
 )
 
 # GATES CHARGED
-
-text_gates_charged = f"""
-Charged Gateway 💰
-
-<code>PayPal -» $0.01</code>
-<code>.pp</code> -» <code>Free</code>
-<code>On ✅</code>
-
-<code>PayPal -» $1</code>
-<code>.ppa</code> -» <code>Free</code>
-<code>On ✅</code>
-
-<code>SquareUp -» $10</code>
-<code>.gh</code> -» <code>Premium</code>
-<code>On ✅</code>
-
-<code>Onrally + Braintree -» $28.99</code>
-<code>.chk</code> -» <code>Premium</code>
-<code>On ✅</code>
-
-<code>Stripe[Ccn] -» $1</code>
-<code>.or</code> -» <code>Premium</code>
-<code>On ✅</code>
-
-<code>Stripe[Ccn] -» $26.29</code>
-<code>.bo</code> -» <code>Premium</code>
-<code>On ✅</code>
-"""
-buttons_charged_page_1 = InlineKeyboardMarkup(
-    [
-        [InlineKeyboardButton("↩️", "gates")],
-    ]
-)
 
 # GATES SPECIALS
 text_gates_especials = f"""💣 CC Killer Gates
