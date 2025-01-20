@@ -126,7 +126,6 @@ buttons_charged_page_5 = InlineKeyboardMarkup(
         [InlineKeyboardButton("↩️", "gates")],
     ]
 )   
-
 text_gates_charged_6 =  f"""
 Zara
 
@@ -138,83 +137,6 @@ Zara
 
 
 buttons_charged_page_6 = InlineKeyboardMarkup(
-    [
-        [InlineKeyboardButton("↩️", "gates")],
-    ]
-)
-
-text_gates_charged_7 =  f"""
-Avs
-
-❌ Inactive | Maintenance
-"""
-
-
-buttons_charged_page_7 = InlineKeyboardMarkup(
-    [
-        [InlineKeyboardButton("↩️", "gates")],
-    ]
-)
-
-text_gates_charged_8 =  f"""
-Willieoseu
-
-- Command: /dx 
-- ✅ Active | 📅 1/20/25
-- $10.0 Charge
-- 1 Credit
-"""
-
-
-buttons_charged_page_8 = InlineKeyboardMarkup(
-    [
-        [InlineKeyboardButton("↩️", "gates")],
-    ]
-)
-
-text_gates_charged_9 =  f"""
-PayPal
-
-- Command: /pp
-- ✅ Active | 📅 1/20/25
-- $0.1 Charge
-- 1 Credit
-"""
-
-
-buttons_charged_page_9 = InlineKeyboardMarkup(
-    [
-        [InlineKeyboardButton("↩️", "gates")],
-    ]
-)
-
-text_gates_charged_10 =  f"""
-Onrally
-
-- Command: /gh
-- ✅ Active | 📅 1/20/25
-- $10.0 Charge
-- 1 Credit
-"""
-
-
-buttons_charged_page_10 = InlineKeyboardMarkup(
-    [
-        [InlineKeyboardButton("↩️", "gates")],
-    ]
-)
-
-text_gates_charged_11 =  f"""
-PayPal Pro
-
-- Command: /ppa
-- ✅ Active | 📅 1/20/25
-- $1.00 Charge
-- 1 Credit
-"""
-
-
-buttons_charged_page_11 = InlineKeyboardMarkup(
     [
         [InlineKeyboardButton("↩️", "gates")],
     ]
@@ -247,7 +169,7 @@ text_gates_charged = f"""
 buttons_charged_page_1 = InlineKeyboardMarkup(
         [
         [
-            InlineKeyboardButton("Braintree", "chargeds_11"),
+            InlineKeyboardButton("Braintree", "specials_3"),
             InlineKeyboardButton("PayPal", "chargeds_2"),
         ],
         [
@@ -259,14 +181,92 @@ buttons_charged_page_1 = InlineKeyboardMarkup(
             InlineKeyboardButton("Adyen", "chargeds_6"),
         ],
         [
-            InlineKeyboardButton("Avs", "chargeds_7"),
-            InlineKeyboardButton("Willieoseu", "chargeds_8"),
+            InlineKeyboardButton("Avs", "specials_4"),
+            InlineKeyboardButton("Willieoseu", "specials_5"),
         ],
         [
-            InlineKeyboardButton("Zara", "chargeds_9"),
-            InlineKeyboardButton("Hyper", "chargeds_10"),
+            InlineKeyboardButton("Zara", "specials_6"),
+            InlineKeyboardButton("Hyper", "specials_7"),
         ],
-        [InlineKeyboardButton("⬅️ Back", "gates")],  # Centered Back Button
+        [InlineKeyboardButton("⬅️ Back", "charged_back")],  # Update callback data to 'charged_back'
+    ]
+)
+
+
+
+text_gates_especials_3 =  f"""
+Avs
+
+❌ Inactive | Maintenance
+"""
+
+
+buttons_specials_page_3 = InlineKeyboardMarkup(
+    [
+        [InlineKeyboardButton("↩️", "gates")],
+    ]
+)
+
+text_gates_especials_4 =  f"""
+Willieoseu
+
+- Command: /dx 
+- ✅ Active | 📅 1/20/25
+- $10.0 Charge
+- 1 Credit
+"""
+
+
+buttons_specials_page_4 = InlineKeyboardMarkup(
+    [
+        [InlineKeyboardButton("↩️", "gates")],
+    ]
+)
+
+text_gates_especials_5 =  f"""
+PayPal
+
+- Command: /pp
+- ✅ Active | 📅 1/20/25
+- $0.1 Charge
+- 1 Credit
+"""
+
+
+buttons_specials_page_5 = InlineKeyboardMarkup(
+    [
+        [InlineKeyboardButton("↩️", "gates")],
+    ]
+)
+
+text_gates_especials_6 =  f"""
+Onrally
+
+- Command: /gh
+- ✅ Active | 📅 1/20/25
+- $10.0 Charge
+- 1 Credit
+"""
+
+buttons_specials_page_6 = InlineKeyboardMarkup(
+    [
+        [InlineKeyboardButton("↩️", "gates")],
+    ]
+)
+
+text_gates_especials_7 =  f"""
+PayPal Pro
+
+- Command: /ppa
+- ✅ Active | 📅 1/20/25
+- $1.00 Charge
+- 1 Credit
+"""
+
+
+buttons_specials_page_7 = InlineKeyboardMarkup(
+    [
+        [InlineKeyboardButton("↩️", "gates")],
     ]
 )
 
