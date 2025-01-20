@@ -80,6 +80,30 @@ async def handler_chargeds(client: Client, callback_query: CallbackQuery):
         await callback_query.edit_message_text(
             text_gates_charged_5, reply_markup=buttons_charged_page_5
         )
+        elif callback_query.data == "chargeds_6":
+        await callback_query.edit_message_text(
+            text_gates_charged_6, reply_markup=buttons_charged_page_6
+        )
+        elif callback_query.data == "chargeds_7":
+        await callback_query.edit_message_text(
+            text_gates_charged_7, reply_markup=buttons_charged_page_7
+        )
+        elif callback_query.data == "chargeds_8":
+        await callback_query.edit_message_text(
+            text_gates_charged_8, reply_markup=buttons_charged_page_8
+        )
+        elif callback_query.data == "chargeds_9":
+        await callback_query.edit_message_text(
+            text_gates_charged_9, reply_markup=buttons_charged_page_9
+        )
+        elif callback_query.data == "chargeds_10":
+        await callback_query.edit_message_text(
+            text_gates_charged_10, reply_markup=buttons_charged_page_10
+        )
+        elif callback_query.data == "chargeds_11":
+        await callback_query.edit_message_text(
+            text_gates_charged_11, reply_markup=buttons_charged_page_11
+        )
 
 
      
@@ -113,3 +137,4 @@ async def handler_tools(client: Client, callback_query: CallbackQuery):
 @Client.on_callback_query(filters.regex("exit"))
 async def handler_exit(client: Client, callback_query: CallbackQuery):
     await callback_query.message.delete()
+    
