@@ -4,9 +4,9 @@ from utilsdf.functions import symbol
 text_home = """
 🤖 Bot Status: Active ✅
 
-📢 For announcements and updates, join us 👉 @blitzupdate
+📢 For announcements and updates, join us 👉 @blitzupdates
 
-💡 Tip: To use Raven in your group, make sure to set it as an admin."""
+💡 Tip: To use Bot in your group, make sure to set it as an admin."""
 
 exit_button = InlineKeyboardButton("𝙀𝙭𝙞𝙩 ⚠️", "exit")
 
@@ -114,7 +114,7 @@ buttons_charged_page_1 = InlineKeyboardMarkup(
         ],
         [
             InlineKeyboardButton("CyberSource", "chargeds_5"),
-            InlineKeyboardButton("Adyen", "chargeds_6"),
+         #   InlineKeyboardButton("Adyen", "chargeds_6"),
         ],
         
         [InlineKeyboardButton("⬅️", "gates")],  # Update callback data to 'charged_back'
@@ -123,12 +123,14 @@ buttons_charged_page_1 = InlineKeyboardMarkup(
 )
 
 text_gates_charged_2 =  f"""
-Braintree
+💰 Charge Gates
+Initiates a charge on the card by deducting the specified amount from the cardholder's account.
 
-- Command: <code>/dx</code>
-- ✅ Active | 📅 1/20/25
-- $10.0 Charge
-- 10 Credit
+🔧 Usage
+Format: `[command] CC|MM|YYYY|CVV`
+Example: <code>/dx</code> <code>5154620014869257|04|2026|447</code>
+
+Ensure the card details provided are correct and the transaction is authorized.
 """
 
 
