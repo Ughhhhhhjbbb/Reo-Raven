@@ -42,19 +42,8 @@ async def ass_(client: Client, m: Message):
     ano = ccs[2]
     cvv = ccs[3]
 
-    # Extract BIN (first 6 digits of CC)
-    bin_number = cc[:6]
 
-    # Fetch BIN information
-    bin_info = await get_bin_info(bin_number)
-    if not bin_info:
-        bin_info_text = "Unable to fetch BIN information."
-    else:
-        bin_info_text = f"""𝗜𝗻𝗳𝗼:
-𝐈𝐬𝐬𝐮𝐞𝐫: {bin_info.get("issuer", "N/A")}
-𝐂𝐨𝐮𝐧𝐭𝐫𝐲: {bin_info.get("country", "N/A")}"""
-
-    # Check antispam
+    # check antispam
     antispam_result = antispam(user_id, user_info["ANTISPAM"], is_free_user)
     if antispam_result != False:
         return await m.reply(
@@ -75,8 +64,11 @@ async def ass_(client: Client, m: Message):
 𝐆𝐚𝐭𝐞𝐰𝐚𝐲: 3DS Lookup
 𝐑𝐞𝐬𝐩𝐨𝐧𝐬𝐞: {vbv}
 
-{bin_info_text}
+𝗜𝗻𝗳𝗼: 
+𝐈𝐬𝐬𝐮𝐞𝐫: 
+𝐂𝐨𝐮𝐧𝐭𝐫𝐲:
 
-𝗧𝗶𝗺𝗲: <code>{final:0.3}'s</code></b>"""
+𝗧𝗶𝗺𝗲 <code>{final:0.3}'s</b>"""
 
     await msg.edit(text_)
+    
