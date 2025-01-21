@@ -17,7 +17,7 @@ async def handler_home(client: Client, callback_query: CallbackQuery):
 async def handler_gates(client: Client, callback_query: CallbackQuery):
     gates_auth = text_gates_auth
     gates_chargeds = (
-        text_gates_charged
+        text_charged_gates
     )
     gates_specials = (
         text_gates_especials
@@ -62,7 +62,7 @@ async def handler_auths(client: Client, callback_query: CallbackQuery):
 async def handler_chargeds(client: Client, callback_query: CallbackQuery):
     if callback_query.data == "chargeds":
         await callback_query.edit_message_text(
-            text_gates_charged, reply_markup=buttons_charged_page_1
+            text_gates_charged_2, reply_markup=buttons_charged_page_1
         )
     elif callback_query.data == "chargeds_2":
         await callback_query.edit_message_text(
@@ -107,7 +107,7 @@ async def handler_specials(client: Client, callback_query: CallbackQuery):
 @Client.on_callback_query(filters.regex("tools"))
 async def handler_tools(client: Client, callback_query: CallbackQuery):
     await callback_query.edit_message_text(
-        text_tools, reply_markup=return_home_and_exit
+        text_tools, reply_markup=return_homae_and_exit
     )
     
 
