@@ -1,10 +1,10 @@
+import requests
 from pyrogram import filters
 from pyromod import Client
 from pyrogram.types import Message
 from utilsdf.db import Database
 from utilsdf.functions import (
     anti_bots_telegram,
-    get_bin_info,
     get_cc,
     antispam,
     get_text_from_pyrogram,
@@ -42,27 +42,12 @@ async def ass_(client: Client, m: Message):
     ano = ccs[2]
     cvv = ccs[3]
 
-    # Extract BIN (first 6 digits of CC)
-    bin_number = cc[:6]
-
-    # Fetch BIN information
-    bin_info = await get_bin_info(bin_number)
+    # Get BIN information from a website
+    bin_info = fetch_bin_info(cc[:6])
     if not bin_info:
-    bin_info_text = "Unable to fetch BIN information."
-else:
-    country_info = bin_info.get("country", {})
-    country_details = (
-        f"𝗖𝗼𝘂𝗻𝘁𝗿𝘆: {country_info.get('name', 'N/A')} "
-        f"{country_info.get('emoji', '')}\n"
-        f"𝐂𝐮𝐫𝐫𝐞𝐧𝐜𝐲: {country_info.get('currency', 'N/A')}\n"
-        f"𝐋𝐚𝐭/𝐋𝐨𝐧: {country_info.get('latitude', 'N/A')}, {country_info.get('longitude', 'N/A')}"
-    )
-    bin_info_text = (
-        f"𝗜𝗻𝗳𝗼:\n"
-        f"𝐈𝐬𝐬𝐮𝐞𝐫: {bin_info.get('issuer', 'N/A')}\n"
-        f"{country_details}"
-    )
-
+        return await m.reply(
+            f"Unable to retrieve BIN information for <code>{cc[:6]}</code>", quote=True
+        )
 
     # Check antispam
     antispam_result = antispam(user_id, user_info["ANTISPAM"], is_free_user)
@@ -85,9 +70,29 @@ else:
 𝐆𝐚𝐭𝐞𝐰𝐚𝐲: 3DS Lookup
 𝐑𝐞𝐬𝐩𝐨𝐧𝐬𝐞: {vbv}
 
-{bin_info_text}
+𝗜𝗻𝗳𝗼:
+𝐈𝐬𝐬𝐮𝐞𝐫: {bin_info.get('bank', 'Unknown')}
+𝐂𝐨𝐮𝐧𝐭𝐫𝐲: {bin_info.get('country', 'Unknown')} ({bin_info.get('code', 'N/A')})
 
-𝗧𝗶𝗺𝗲: <code>{final:0.3}'s</code></b>"""
+𝗧𝗶𝗺𝗲 <code>{final:0.3}'s</b>"""
 
     await msg.edit(text_)
-    
+
+
+# Function to fetch BIN info from a website (e.g., BinList API)
+def fetch_bin_info(bin_number):
+    try:
+        url = f"https://lookup.binlist.net/{bin_number}"  # Example: BinList API
+        response = requests.get(url, timeout=5)
+        if response.status_code == 200:
+            data = response.json()
+            return {
+                "bank": data.get("bank", {}).get("name", "Unknown"),
+                "country": data.get("country", {}).get("name", "Unknown"),
+                "code": data.get("country", {}).get("alpha2", "N/A"),
+            }
+        else:
+            return None
+    except requests.RequestException:
+        return None
+        
