@@ -17,7 +17,7 @@ async def handler_home(client: Client, callback_query: CallbackQuery):
 async def handler_gates(client: Client, callback_query: CallbackQuery):
     gates_auth = text_gates_auth
     gates_chargeds = (
-        text_charged_gates
+        text_charge_gates
     )
     gates_specials = (
         text_gates_especials
