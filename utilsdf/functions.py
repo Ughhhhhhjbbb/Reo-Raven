@@ -7,6 +7,7 @@ from datetime import date
 from utilsdf.generator import Generator
 from httpx import AsyncClient
 from time import time
+import aiohttp
 from pyromod import Client, Message
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
@@ -267,22 +268,21 @@ def get_bin_info_of_database(bin: str) -> dict | None:
 
 
 # refactorizar
-async def get_bin_info(bin: str) -> dict | None:
-    bin = bin[0:6]
-    async with AsyncClient(follow_redirects=True, verify=False) as s:
-        response = await s.get(
-            f"https://bincheck.io/details/{bin}",
-        )
-        if response.status_code != 200:
-            return get_bin_info_of_database(bin)
-        response = response.text
-        banned_bins = json.load(open("assets/banned_bins.json", "r"))
 
-        banned = False
-        if str(bin) in banned_bins or "BRAZIL" in response["country_name"]:
-            banned = True
-        response["banned"] = banned
-        return response
+
+async def get_bin_info(bin_number):
+    url = f"https://lookup.binlist.net/{bin_number}"  # Example BIN lookup API
+    headers = {"Accept-Version": "3"}
+    try:
+        async with aiohttp.ClientSession() as session:
+            async with session.get(url, headers=headers) as response:
+                if response.status == 200:
+                    return await response.json()
+                return None
+    except Exception as e:
+        print(f"Error fetching BIN info: {e}")
+        return None
+
 
 
 async def get_extras(bin: str) -> dict | None:
@@ -519,3 +519,4 @@ async def translate(text: str, translate_to: str = Languages["SPANISH"]) -> str:
         )
         response = response.json()
         return response[0][0]
+                
