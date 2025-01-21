@@ -1,10 +1,10 @@
-import requests
 from pyrogram import filters
 from pyromod import Client
 from pyrogram.types import Message
 from utilsdf.db import Database
 from utilsdf.functions import (
     anti_bots_telegram,
+    get_bin_info,
     get_cc,
     antispam,
     get_text_from_pyrogram,
@@ -23,12 +23,12 @@ async def ass_(client: Client, m: Message):
             await user_not_premium(m)
             return
         user_info = db.get_info_user(user_id)
-        is_free_user = user_info["MEMBERSHIP"]
-        is_free_user = is_free_user.lower() == "free user"
+        is_free_user = user_info["MEMBERSHIP"].lower() == "free user"
         if is_free_user:
             captcha = await anti_bots_telegram(m, client)
             if not captcha:
                 return
+
     text = get_text_from_pyrogram(m)
     ccs = get_cc(text)
     if not ccs:
@@ -36,25 +36,47 @@ async def ass_(client: Client, m: Message):
             "𝙂𝙖𝙩𝙚𝙬𝙖𝙮 <code>𝙑𝙗𝙫 ♻️</code>\n𝙁𝙤𝙧𝙢𝙖𝙩 -» <code>/vbv cc|month|year|cvc</code>",
             quote=True,
         )
+
     ini = perf_counter()
     cc = ccs[0]
     mes = ccs[1]
     ano = ccs[2]
     cvv = ccs[3]
 
-    # Get BIN information from a website
-    bin_info = fetch_bin_info(cc[:6])
+    # Extract BIN (first 6 digits of CC)
+    bin_number = cc[:6]
+
+    # Fetch BIN information
+    bin_info = await get_bin_info(bin_number)
     if not bin_info:
-        return await m.reply(
-            f"Unable to retrieve BIN information for <code>{cc[:6]}</code>", quote=True
+        bin_info_text = "𝗜𝗻𝗳𝗼: Unable to fetch BIN information."
+    else:
+        # Format BIN details
+        card_type = bin_info.get("type", "N/A").upper()
+        card_brand = bin_info.get("brand", "N/A").upper()
+        card_level = bin_info.get("level", "N/A").upper()
+        issuer = bin_info.get("issuer", "N/A").upper()
+
+        country_info = bin_info.get("country", {})
+        country_name = country_info.get("name", "N/A").upper()
+        country_emoji = country_info.get("emoji", "")
+        currency = country_info.get("currency", "N/A")
+        country_details = f"{country_name} {country_emoji}"
+
+        bin_info_text = (
+            f"𝗜𝗻𝗳𝗼: {card_brand} - {card_type} - {card_level}\n"
+            f"𝐈𝐬𝐬𝐮𝐞𝐫: {issuer}\n"
+            f"𝐂𝐨𝐮𝐧𝐭𝐫𝐲: {country_details}\n"
+            f"𝐂𝐮𝐫𝐫𝐞𝐧𝐜𝐲: {currency}"
         )
 
     # Check antispam
     antispam_result = antispam(user_id, user_info["ANTISPAM"], is_free_user)
-    if antispam_result != False:
+    if antispam_result:
         return await m.reply(
             f"𝙋𝙡𝙚𝙖𝙨𝙚 𝙒𝙖𝙞𝙩... -» <code>{antispam_result}'s</code>", quote=True
         )
+
     msg = await m.reply("𝙋𝙡𝙚𝙖𝙨𝙚 𝙒𝙖𝙞𝙩...", quote=True)
     cc_formatted = f"{cc}|{mes}|{ano}|{cvv}"
 
@@ -70,29 +92,10 @@ async def ass_(client: Client, m: Message):
 𝐆𝐚𝐭𝐞𝐰𝐚𝐲: 3DS Lookup
 𝐑𝐞𝐬𝐩𝐨𝐧𝐬𝐞: {vbv}
 
-𝗜𝗻𝗳𝗼:
-𝐈𝐬𝐬𝐮𝐞𝐫: {bin_info.get('bank', 'Unknown')}
-𝐂𝐨𝐮𝐧𝐭𝐫𝐲: {bin_info.get('country', 'Unknown')} ({bin_info.get('code', 'N/A')})
 
-𝗧𝗶𝗺𝗲 <code>{final:0.3}'s</b>"""
+{bin_info_text}
+
+𝗧𝗶𝗺𝗲: <code>{final:0.2f} 𝐬𝐞𝐜𝐨𝐧𝐝𝐬</code></b>"""
 
     await msg.edit(text_)
-
-
-# Function to fetch BIN info from a website (e.g., BinList API)
-def fetch_bin_info(bin_number):
-    try:
-        url = f"https://lookup.binlist.net/{bin_number}"  # Example: BinList API
-        response = requests.get(url, timeout=5)
-        if response.status_code == 200:
-            data = response.json()
-            return {
-                "bank": data.get("bank", {}).get("name", "Unknown"),
-                "country": data.get("country", {}).get("name", "Unknown"),
-                "code": data.get("country", {}).get("alpha2", "N/A"),
-            }
-        else:
-            return None
-    except requests.RequestException:
-        return None
-        
+    
