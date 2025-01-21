@@ -48,11 +48,21 @@ async def ass_(client: Client, m: Message):
     # Fetch BIN information
     bin_info = await get_bin_info(bin_number)
     if not bin_info:
-        bin_info_text = "Unable to fetch BIN information."
-    else:
-        bin_info_text = f"""𝗜𝗻𝗳𝗼:
-𝐈𝐬𝐬𝐮𝐞𝐫: {bin_info.get("issuer", "N/A")}
-𝐂𝐨𝐮𝐧𝐭𝐫𝐲: {bin_info.get("country", "N/A")}"""
+    bin_info_text = "Unable to fetch BIN information."
+else:
+    country_info = bin_info.get("country", {})
+    country_details = (
+        f"𝗖𝗼𝘂𝗻𝘁𝗿𝘆: {country_info.get('name', 'N/A')} "
+        f"{country_info.get('emoji', '')}\n"
+        f"𝐂𝐮𝐫𝐫𝐞𝐧𝐜𝐲: {country_info.get('currency', 'N/A')}\n"
+        f"𝐋𝐚𝐭/𝐋𝐨𝐧: {country_info.get('latitude', 'N/A')}, {country_info.get('longitude', 'N/A')}"
+    )
+    bin_info_text = (
+        f"𝗜𝗻𝗳𝗼:\n"
+        f"𝐈𝐬𝐬𝐮𝐞𝐫: {bin_info.get('issuer', 'N/A')}\n"
+        f"{country_details}"
+    )
+
 
     # Check antispam
     antispam_result = antispam(user_id, user_info["ANTISPAM"], is_free_user)
